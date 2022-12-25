@@ -5,9 +5,12 @@ const server = http.createServer(app);
 const { Server, Socket } = require("socket.io");
 const io = new Server(server);
 const crypto = require('crypto');
+const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 global_history = []
 
